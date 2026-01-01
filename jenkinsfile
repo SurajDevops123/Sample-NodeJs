@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    tools{
+        nodejs 'Node 25'
+    }
+    stages{
+        stage('fetch the code'){
+            steps{
+               git branch: 'main', url: 'https://github.com/SurajDevops123/Sample-NodeJs.git' 
+                }
+            }
+        stage('build the code'){
+            steps{
+                sh 'npm install'
+                }
+            }
+        stage('deploy the code'){
+            steps{
+                sh 'npm start'
+            }
+        }
+    }
+}
